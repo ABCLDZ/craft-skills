@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from validate_cases import validate_data
 
-original = json.loads(Path(__file__).with_name('cases.yaml').read_text())
+original = json.loads(Path(__file__).with_name('cases.yaml').read_text(encoding='utf-8'))
 assert validate_data(original) == 8
 for mutation in ('duplicate_id', 'unknown_route', 'empty_expectation', 'wrong_skill'):
     data = copy.deepcopy(original)
